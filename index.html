@@ -158,7 +158,7 @@
             picker.hide();
           },
           saveDate: function () {
-            var date = moment(this.datePart + this.startTimePart + this.endTimePart, config.dateFormat + config.timeFormat + config.timeFormat, true);
+            var date = this.datePart + this.startTimePart + this.endTimePart;
 
             if (!date.isValid()) {
               field.removeValue();
