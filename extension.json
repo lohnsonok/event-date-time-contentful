@@ -10,8 +10,7 @@
       {
         "id": "helpText",
         "type": "Symbol",
-        "name": "Note",
-        "description": ""
+        "name": "Note"
       }
     ]
   }
