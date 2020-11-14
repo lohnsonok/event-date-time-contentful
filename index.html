@@ -109,8 +109,8 @@
           endTimePart: '',
         },
         created: function () {
-          detachValueChangeHandler = field.onValueChanged(this.loadDate);
-          window.addEventListener('unload', this.beforeDestroy);
+          //detachValueChangeHandler = field.onValueChanged(this.loadDate);
+          //window.addEventListener('unload', this.beforeDestroy);
 
           if (picker) {
             picker.destroy();

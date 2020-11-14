@@ -3,7 +3,7 @@
   "name": "Event Date",
   "srcdoc": "./index.html",
   "fieldTypes": [
-    "Date"
+    "Symbol"
   ],
   "parameters": {
     "instance": [
@@ -11,7 +11,7 @@
         "id": "helpText",
         "type": "Symbol",
         "name": "Note",
-        "description": "Ordre : Date de l'évenement , Heure de Départ , Heure de Fin"
+        "description": "Ordre : Date de l'évenement , Heure de Départ (format: 12h00) , Heure de Fin (format: 12h00)"
       }
     ]
   }
