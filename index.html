@@ -104,7 +104,7 @@
       new Vue({
         el: '#app',
         data: {
-          datePart: moment(),
+          datePart: moment().format(config.dateFormat),
           startTimePart: '',
           endTimePart: '',
         },
