@@ -69,29 +69,16 @@
 
 <body>
   <div class="cf-form-field cf-form-field--no-buttons" id="app">
-    <input type="text" size="30" aria-label="Date" spellcheck="false" autocomplete="off"
-      class="cf-form-input cf-form-input--inline" v-model="datePart" v-on:input="saveDate" v-on:click="showPicker"
-      v-on:blur="hidePicker" v-bind:aria-invalid="!datePartValid">
-
-    <input type="text" size="5" aria-label="StartTime" spellcheck="false" autocomplete="off"
-      class="cf-form-input cf-form-input--inline" v-model="startTimePart" v-on:input="saveDate"
-      v-bind:aria-invalid="!startTimePartValid">
-
-    <input type="text" size="5" aria-label="EndTime" spellcheck="false" autocomplete="off"
-      class="cf-form-input cf-form-input--inline" v-model="endTimePart" v-on:input="saveDate"
-      v-bind:aria-invalid="!endTimePartValid">
-    <div class="cf-field-error" v-if="!datePartValid">Le format de la date n'est pas valide</div>
-    <div class="cf-field-error" v-if="!startTimePartValid">Le format de l'heure de départ n'est pas valide</div>
-    <div class="cf-field-error" v-if="!endTimePartValid">Le format de l'heure de fin n'est pas valide</div>
-    <div class="cf-form-hint" v-if="helpText">{{ helpText }}</div>
+    <input type="text" size="5" aria-label="Time" spellcheck="false" autocomplete="off"
+      class="cf-form-input cf-form-input--inline" v-model="timePart" v-on:input="saveDate"
+      v-bind:aria-invalid="!timePartValid">
+    <div class="cf-field-error" v-if="!timePartValid">Le format n'est pas valide</div>
   </div>
-  <div id="datepicker"></div>
 
   <script>
     'use strict';
 
     var config = {
-      dateFormat: 'DD/MM/YYYY',
       timeFormat: 'HH:mm',
     };
 
@@ -104,40 +91,15 @@
       new Vue({
         el: '#app',
         data: {
-          datePart: moment().format(config.dateFormat),
-          startTimePart: '',
-          endTimePart: '',
+          timePart: '',
         },
         created: function () {
-          //detachValueChangeHandler = field.onValueChanged(this.loadDate);
-          //window.addEventListener('unload', this.beforeDestroy);
-
-          if (picker) {
-            picker.destroy();
-          }
-
-          picker = new Pikaday({
-            format: config.dateFormat,
-            position: 'bottom left',
-            reposition: false,
-            onSelect: this.pickDate,
-            theme: 'pika-theme',
-          });
-          picker.hide();
-          document.querySelector('#datepicker').appendChild(picker.el);
+          detachValueChangeHandler = field.onValueChanged(this.loadDate);
+          window.addEventListener('unload', this.beforeDestroy);
         },
         computed: {
-          helpText: function () {
-            return extensionsApi.parameters.instance.helpText;
-          },
-          datePartValid: function () {
-            return moment(this.datePart, config.dateFormat, true).isValid();
-          },
-          startTimePartValid: function () {
-            return moment(this.startTimePart, config.timeFormat, true).isValid();
-          },
-          endTimePartValid: function () {
-            return moment(this.endTimePart, config.timeFormat, true).isValid();
+          timePartValid: function () {
+            return moment(this.timePart, config.timeFormat, true).isValid();
           }
         },
         methods: {
@@ -145,34 +107,22 @@
             detachValueChangeHandler();
             window.removeEventListener('unload', this.beforeDestroy);
           },
-          pickDate: function () {
-            picker.hide();
-            this.datePart = picker.getMoment().format(config.dateFormat);
-            this.saveDate();
-          },
-          showPicker: function () {
-            picker.show();
-            picker.gotoDate(this.datePart);
-          },
-          hidePicker: function () {
-            picker.hide();
-          },
           saveDate: function () {
-            var date = this.datePart + this.startTimePart + this.endTimePart;
+            var time = moment(this.timePart, config.timeFormat, true);
 
-            if (!date.isValid()) {
+            if (!time.isValid()) {
               field.removeValue();
               return;
             }
-            field.setValue(date);
+
+            field.setValue(time.format());
           },
           loadDate: function (value) {
             if (value === undefined) {
               return;
             }
-            this.datePart = moment(value).format(config.dateFormat);
-            this.startTimePart = moment(value).format(config.timeFormat);
-            this.endTimePart = moment(value).format(config.timeFormat);
+
+            this.timePart = moment(value).format(config.timeFormat);
           }
         }
       });
