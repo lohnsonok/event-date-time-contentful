@@ -164,14 +164,12 @@
               field.removeValue();
               return;
             }
-
             field.setValue(date);
           },
           loadDate: function (value) {
             if (value === undefined) {
               return;
             }
-
             this.datePart = moment(value).format(config.dateFormat);
             this.startTimePart = moment(value).format(config.timeFormat);
             this.endTimePart = moment(value).format(config.timeFormat);
