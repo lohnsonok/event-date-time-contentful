@@ -75,7 +75,7 @@
 
     <input type="text" size="5" aria-label="StartTime" spellcheck="false" autocomplete="off"
       class="cf-form-input cf-form-input--inline" v-model="startTimePart" v-on:input="saveDate"
-      v-bind:aria-invalid="!starTimePartValid">
+      v-bind:aria-invalid="!startTimePartValid">
 
     <input type="text" size="5" aria-label="EndTime" spellcheck="false" autocomplete="off"
       class="cf-form-input cf-form-input--inline" v-model="endTimePart" v-on:input="saveDate"
@@ -173,7 +173,7 @@
             }
 
             this.datePart = moment(value).format(config.dateFormat);
-            this.starTimePart = moment(value).format(config.timeFormat);
+            this.startTimePart = moment(value).format(config.timeFormat);
             this.endTimePart = moment(value).format(config.timeFormat);
           }
         }
