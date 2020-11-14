@@ -75,11 +75,11 @@
 
     <input type="text" size="5" aria-label="StartTime" spellcheck="false" autocomplete="off"
       class="cf-form-input cf-form-input--inline" v-model="startTimePart" v-on:input="saveDate"
-      v-bind:aria-invalid="!timePartValid">
+      v-bind:aria-invalid="!starTimePartValid">
 
     <input type="text" size="5" aria-label="EndTime" spellcheck="false" autocomplete="off"
       class="cf-form-input cf-form-input--inline" v-model="endTimePart" v-on:input="saveDate"
-      v-bind:aria-invalid="!timePartValid">
+      v-bind:aria-invalid="!endTimePartValid">
     <div class="cf-field-error" v-if="!datePartValid">Le format de la date n'est pas valide</div>
     <div class="cf-field-error" v-if="!startTimePartValid">Le format de l'heure de départ n'est pas valide</div>
     <div class="cf-field-error" v-if="!endTimePartValid">Le format de l'heure de fin n'est pas valide</div>
