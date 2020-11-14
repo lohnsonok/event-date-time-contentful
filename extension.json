@@ -1,0 +1,18 @@
+{
+  "id": "event date",
+  "name": "Event Date",
+  "srcdoc": "./index.html",
+  "fieldTypes": [
+    "Date"
+  ],
+  "parameters": {
+    "instance": [
+      {
+        "id": "helpText",
+        "type": "Symbol",
+        "name": "Note",
+        "description": "Ordre : Date de l'évenement , Heure de Départ , Heure de Fin"
+      }
+    ]
+  }
+}
