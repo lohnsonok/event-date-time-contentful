@@ -4,5 +4,15 @@
   "srcdoc": "./index.html",
   "fieldTypes": [
     "Symbol"
-  ]
+  ],
+  "parameters": {
+    "instance": [
+      {
+        "id": "helpText",
+        "type": "Symbol",
+        "name": "Note",
+        "description": ""
+      }
+    ]
+  }
 }
