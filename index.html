@@ -91,7 +91,7 @@
     'use strict';
 
     var config = {
-      dateFormat: 'd/MM/YYYY',
+      dateFormat: 'DD/MM/YYYY',
       timeFormat: 'HH:mm',
     };
 
@@ -104,7 +104,7 @@
       new Vue({
         el: '#app',
         data: {
-          datePart: moment(),
+          datePart: '',
           startTimePart: '',
           endTimePart: '',
         },
