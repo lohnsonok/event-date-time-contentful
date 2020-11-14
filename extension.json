@@ -1,6 +1,6 @@
 {
   "id": "event time",
-  "name": "Event time",
+  "name": "Event Time",
   "srcdoc": "./index.html",
   "fieldTypes": [
     "Symbol"
